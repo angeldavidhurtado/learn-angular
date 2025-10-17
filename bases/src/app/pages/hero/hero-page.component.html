@@ -1,0 +1,12 @@
+<h2>Hero</h2>
+
+<dl>
+  <td>Nombre:</td> <dd>{{ name() }}</dd>
+  <td>Edad:</td> <dd>{{ age() }}</dd>
+  <!-- <td>Descripción:</td> <dd>{{ description().toUpperCase() }}</dd> -->
+  <td>Descripción:</td> <dd>{{ description() | uppercase }}</dd>
+</dl>
+
+<button (click)="changeAge()">Cambiar nombre</button>
+<button (click)="changeName()">Cambiar edad</button>
+<button (click)="resetForm()">Reset</button>
