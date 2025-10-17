@@ -1,0 +1,33 @@
+<style>
+  nav {
+    display: flex;
+    justify-content: space-around;
+    background: #212121;
+    padding: 10px;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+  }
+
+  nav a.active {
+    text-decoration: underline;
+  }
+</style>
+
+<nav>
+  <a
+    routerLink="/"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >Home</a>
+  <!-- La ruta debe ser igual, no solo pasar por / en este caso -->
+  <a routerLink="/counter" routerLinkActive="active">Contador</a>
+  <a routerLink="/hero" [routerLinkActive]="['active']">Hero</a>
+  <!--
+  por si se necesita colocar un valor
+  computado, signal o dinamico a la derecha del igual
+  <a [routerLink]="['/hero']" [routerLinkActive]="'active'">Hero</a>
+  -->
+</nav>
