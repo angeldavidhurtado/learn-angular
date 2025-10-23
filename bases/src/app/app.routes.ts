@@ -19,6 +19,10 @@ export const routes: Routes = [
   },
   {
     path: 'dragonball',
-    component: DragonballComponent
-  }
+    component: DragonballComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ]
