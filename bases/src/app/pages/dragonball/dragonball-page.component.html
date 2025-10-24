@@ -1,4 +1,19 @@
 <style>
+  .nuevo-personaje {
+    margin-bottom: 20px;
+    display: flex;
+    flex-flow: column;
+    width: 15rem;
+    gap: 5px;
+    margin: auto;
+  }
+
+  .nuevo-personaje input {
+    border: none;
+    border-radius: 7px;
+    padding: 7px 10px;
+  }
+
   .red { color: red; }
   .cyan { color: cyan; }
 </style>
@@ -6,15 +21,23 @@
 <h1>Dragon Ball</h1>
 
 <ul>
+  <div class="nuevo-personaje">
+    <h3>Agregar</h3>
+    <input type="text" placeholder="Nombre">
+    <input type="number" placeholder="Poder">
+  </div>
+
   @for (character of characters(); track character.id) {
-    <li>
-      {{ character.name }}
-      <span
-        [class.red]="character.power > 9000"
-        [class.cyan]="character.power < 300"
-      >
-        {{ character.power }}
-      </span>
-    </li>
+    @if (character.power > 500) {
+      <li>
+        {{ character.name }}
+        <span
+          [class.red]="character.power > 9000"
+          [class.cyan]="character.power < 300"
+        >
+          {{ character.power }}
+        </span>
+      </li>
+    }
   }
 </ul>
