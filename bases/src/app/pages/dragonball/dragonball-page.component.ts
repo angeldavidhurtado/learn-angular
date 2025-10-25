@@ -7,9 +7,10 @@ interface Character {
 import { Component, signal } from '@angular/core'
 
 @Component({
-  templateUrl: './dragonball-page.component.html'
+  templateUrl: './dragonball-page.component.html',
+  selector: 'dragonball',
 })
-export class DragonballComponent {
+export class DragonballPageComponent {
   name = signal('Gohan')
   power = signal(100)
 
@@ -59,5 +60,3 @@ export class DragonballComponent {
     this.power.set(0)
   }
 }
-
-// https://www.youtube.com/watch?v=9rkpGkxmfPQ&list=PLCKuOXG0bPi3cfoQcSTaGUnqZbzLA30Hi&index=23

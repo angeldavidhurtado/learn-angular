@@ -1,0 +1,78 @@
+<style>
+  .nuevo-personaje {
+    margin-bottom: 20px;
+    display: flex;
+    flex-flow: column;
+    width: 15rem;
+    gap: 5px;
+    margin: auto;
+  }
+
+  .nuevo-personaje input {
+    border: none;
+    border-radius: 7px;
+    padding: 7px 10px;
+  }
+
+  .red { color: red; }
+  .cyan { color: cyan; }
+</style>
+
+<h1>Dragon Ball</h1>
+
+<ul>
+  <div class="nuevo-personaje">
+    <h3>Agregar</h3>
+    <!--
+    <input
+      type="text"
+      placeholder="Nombre"
+      [value]="name()"
+      (change)="myFunction($event, 'name')"
+    >
+    <input
+      type="text"
+      placeholder="Nombre"
+      [value]="name()"
+      (change)="myFunction(txtName, 'name')"
+      #txtName
+    >
+    -->
+    <!--
+    #txtName
+    es una referencia al elemento, como si fuera un id
+    -->
+
+    <input
+      type="text"
+      placeholder="Nombre"
+      [value]="name()"
+      (change)="name.set(txtName.value)"
+      #txtName
+    >
+    <input
+      type="number"
+      placeholder="Poder"
+      [value]="power()"
+      (change)="power.set(+txtPower.value)"
+      #txtPower
+    >
+    <button (click)="addCharacter()">Agregar</button>
+  </div>
+
+  @for (character of characters(); track character.id) {
+    <li>
+      @if (character.power > 500) {
+        {{ character.name }}
+        <span
+          [class.red]="character.power > 9000"
+          [class.cyan]="character.power < 9000"
+        >
+          {{ character.power }}
+        </span>
+      } @else {
+        <strong>Aquí no hay nadie</strong>
+      }
+    </li>
+  }
+</ul>
