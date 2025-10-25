@@ -23,21 +23,56 @@
 <ul>
   <div class="nuevo-personaje">
     <h3>Agregar</h3>
-    <input type="text" placeholder="Nombre">
-    <input type="number" placeholder="Poder">
+    <!--
+    <input
+      type="text"
+      placeholder="Nombre"
+      [value]="name()"
+      (change)="myFunction($event, 'name')"
+    >
+    <input
+      type="text"
+      placeholder="Nombre"
+      [value]="name()"
+      (change)="myFunction(txtName, 'name')"
+      #txtName
+    >
+    -->
+    <!--
+    #txtName
+    es una referencia al elemento, como si fuera un id
+    -->
+
+    <input
+      type="text"
+      placeholder="Nombre"
+      [value]="name()"
+      (change)="name.set(txtName.value)"
+      #txtName
+    >
+    <input
+      type="number"
+      placeholder="Poder"
+      [value]="power()"
+      (change)="power.set(+txtPower.value)"
+      #txtPower
+    >
+    <button (click)="addCharacter()">Agregar</button>
   </div>
 
   @for (character of characters(); track character.id) {
-    @if (character.power > 500) {
-      <li>
+    <li>
+      @if (character.power > 500) {
         {{ character.name }}
         <span
           [class.red]="character.power > 9000"
-          [class.cyan]="character.power < 300"
+          [class.cyan]="character.power < 9000"
         >
           {{ character.power }}
         </span>
-      </li>
-    }
+      } @else {
+        <strong>Aquí no hay nadie</strong>
+      }
+    </li>
   }
 </ul>
