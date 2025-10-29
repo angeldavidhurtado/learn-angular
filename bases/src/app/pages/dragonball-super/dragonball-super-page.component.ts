@@ -5,9 +5,11 @@ interface Character {
 }
 
 import { Component, signal } from '@angular/core'
+import { CharacterListComponent } from '../../components/dragonball/character-list/character-list.component'
 
 @Component({
   templateUrl: './dragonball-super-page.component.html',
+  imports: [CharacterListComponent],
   selector: 'dragonball-super',
 })
 export class DragonballSuperPageComponent {
