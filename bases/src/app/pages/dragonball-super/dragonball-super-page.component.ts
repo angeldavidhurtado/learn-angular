@@ -1,43 +1,25 @@
-interface Character {
-  id: number
-  name: string
-  power: number
-}
-
-import { Component, signal } from '@angular/core'
+import { Component, inject } from '@angular/core'
 import { CharacterListComponent } from '../../components/dragonball/character-list/character-list.component'
+import { CharacterAddComponent } from '../../components/dragonball/character-add/character-add.component'
+import { DragonballService } from '../../services/dragonball.service'
 
 @Component({
   templateUrl: './dragonball-super-page.component.html',
-  imports: [CharacterListComponent],
+  imports: [CharacterListComponent, CharacterAddComponent],
   selector: 'dragonball-super',
 })
 export class DragonballSuperPageComponent {
-  name = signal('')
-  power = signal(0)
+  dragonballService = inject(DragonballService)
 
-  characters = signal<Character[]>([
-    { id: 10, name: 'Goku', power: 9001 },
-    { id: 20, name: 'Vegetta', power: 777 },
-  ])
+  /*
+  // forma antigua de inyectar dependencias
 
-  addCharacter = () => {
-    if (!this.name() || !this.power() || this.power() <= 0)
-      return
+  constructor(
+    public dragonballService: DragonballService
+  ) {}
 
-    const newCharacter: Character = {
-      id: this.characters().length + 1,
-      name: this.name(),
-      power: this.power(),
-    }
-
-    this.characters.update((list) => [...list, newCharacter])
-    this.resetFields()
+  addCharacter() {
+    this.dragonballService
   }
-
-
-  resetFields() {
-    this.name.set('')
-    this.power.set(0)
-  }
+  */
 }

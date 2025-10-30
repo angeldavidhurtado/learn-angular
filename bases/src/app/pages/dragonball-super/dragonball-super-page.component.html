@@ -1,64 +1,23 @@
-<style>
-  .nuevo-personaje {
-    margin-bottom: 20px;
-    display: flex;
-    flex-flow: column;
-    width: 15rem;
-    gap: 5px;
-    margin: auto;
-  }
-
-  .nuevo-personaje input {
-    border: none;
-    border-radius: 7px;
-    padding: 7px 10px;
-  }
-
-  .red { color: red; }
-  .cyan { color: cyan; }
-</style>
-
 <h1>Dragon Ball</h1>
 
-<ul>
-  <div class="nuevo-personaje">
-    <h3>Agregar</h3>
-    <!--
-    <input
-      type="text"
-      placeholder="Nombre"
-      [value]="name()"
-      (change)="myFunction($event, 'name')"
-    >
-    <input
-      type="text"
-      placeholder="Nombre"
-      [value]="name()"
-      (change)="myFunction(txtName, 'name')"
-      #txtName
-    >
-    -->
-    <!--
-    #txtName
-    es una referencia al elemento, como si fuera un id
-    -->
+<dragonball-character-add
+  (newCharacter)="dragonballService.addCharacter($event)"
+/>
 
-    <input
-      type="text"
-      placeholder="Nombre"
-      [value]="name()"
-      (change)="name.set(txtName.value)"
-      #txtName
-    >
-    <input
-      type="number"
-      placeholder="Poder"
-      [value]="power()"
-      (change)="power.set(+txtPower.value)"
-      #txtPower
-    >
-    <button (click)="addCharacter()">Agregar</button>
-  </div>
+<dragonball-character-list
+  listName="Listado de personajes"
+  [characters]="dragonballService.characters()"
+/>
 
-  <dragonball-character-list />
-</ul>
+<!--
+Sin estado global, solo persistia la información mientras que uno estaba en la ruta de este componente, al cambiar de ruta y volver se perdia la información
+
+<dragonball-character-add
+  (newCharacter)="addCharacter($event)"
+/>
+
+<dragonball-character-list
+  [characters]="characters()"
+  listName="Listado de personajes"
+/>
+-->

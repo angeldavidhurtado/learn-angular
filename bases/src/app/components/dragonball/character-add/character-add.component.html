@@ -1,0 +1,38 @@
+<style>
+  .character-add {
+    margin-bottom: 20px;
+    display: flex;
+    flex-flow: column;
+    width: 15rem;
+    gap: 5px;
+    margin: auto;
+  }
+
+  .character-add input {
+    border: none;
+    border-radius: 7px;
+    padding: 7px 10px;
+  }
+</style>
+
+<div class="character-add">
+  <h3>Agregar</h3>
+
+  <input
+    type="text"
+    placeholder="Nombre"
+    [value]="name()"
+    (change)="name.set(txtName.value)"
+    #txtName
+  >
+
+  <input
+    type="number"
+    placeholder="Poder"
+    [value]="power()"
+    (change)="power.set(+txtPower.value)"
+    #txtPower
+  >
+
+  <button (click)="addCharacter()">Agregar</button>
+</div>

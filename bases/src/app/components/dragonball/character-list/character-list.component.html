@@ -1,15 +1,25 @@
-@for (character of characters(); track character.id) {
-  <li>
-    @if (character.power > 500) {
-      {{ character.name }}
-      <span
-        [class.red]="character.power > 9000"
-        [class.cyan]="character.power < 9000"
-      >
-        {{ character.power }}
-      </span>
-    } @else {
-      <strong>Aquí no hay nadie</strong>
+<style>
+  .red { color: red; }
+  .cyan { color: cyan; }
+</style>
+
+<div class="list-characters">
+  <h3>{{ listName() }}</h3>
+  <ul>
+    @for (character of characters(); track character.id) {
+      <li>
+        @if (character.power > 500) {
+          {{ character.name }}
+          <span
+            [class.red]="character.power > 9000"
+            [class.cyan]="character.power < 9000"
+          >
+            {{ character.power }}
+          </span>
+        } @else {
+          <strong>Aquí no hay nadie</strong>
+        }
+      </li>
     }
-  </li>
-}
+  </ul>
+</div>
