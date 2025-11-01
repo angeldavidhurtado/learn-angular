@@ -30,6 +30,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/learn-angular/",
               "budgets": [
                 {
                   "type": "initial",
